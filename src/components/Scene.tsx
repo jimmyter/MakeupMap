@@ -3,11 +3,13 @@
 import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera, OrbitControls, Environment } from "@react-three/drei";
 import Model from "./Model";
+import type { PartKey } from "@/app/page";
 
+interface SceneProps {
+  onSelectPart: (partKey: PartKey) => void;
+}
 
-export default function Scene(){
-
-
+export default function Scene({ onSelectPart }: SceneProps){
     return(
         // className removed to be changed in page.tsx
         // or not
@@ -50,7 +52,7 @@ export default function Scene(){
                 />
                 
                 {/* Model */}
-                <Model/>
+                <Model onSelectPart={onSelectPart}/>
             </Canvas>
         </div>
     )
