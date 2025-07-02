@@ -1,6 +1,7 @@
 import { useGLTF, Center } from "@react-three/drei"
 import { useRef, useState, useEffect } from "react";
 import { Group, Mesh, MeshStandardMaterial } from "three";
+import type { PartKey } from "@/app/page";
 
 useGLTF.preload('/Face_v1.glb')
 
@@ -10,12 +11,14 @@ function HoverableMesh({
     meshName, 
     nodes, 
     hoverColor = 0xff6b9d, 
-    emissiveIntensity = 0.5 
+    emissiveIntensity = 0.5,
+    onClick
 }: {
-    meshName: string;
+    meshName: import("@/app/page").PartKey;
     nodes: any;
     hoverColor?: number;
     emissiveIntensity?: number;
+    onClick?: (meshName: import("@/app/page").PartKey) => void;
 }) {
     const [hovered, setHovered] = useState(false);
     const [meshMaterial, setMeshMaterial] = useState<MeshStandardMaterial | null>(null);
@@ -61,6 +64,7 @@ function HoverableMesh({
             // Pointer detection
             onPointerEnter={() => setHovered(true)}
             onPointerLeave={() => setHovered(false)}
+            onClick={() => onClick && onClick(meshName as import("@/app/page").PartKey)}
         >   
             {/* Creating a new invisible mesh from the original*/}
             <bufferGeometry {...mesh.geometry} />
@@ -75,7 +79,11 @@ function HoverableMesh({
     );
 }
 
-export default function Model(){
+interface ModelProps {
+  onSelectPart: (partKey: PartKey) => void;
+}
+
+export default function Model({ onSelectPart }: ModelProps){
     const group = useRef<Group>(null);
     const {nodes, materials, scene} = useGLTF("/Face_v1.glb")
     
@@ -89,36 +97,37 @@ export default function Model(){
                     meshName="Nose" 
                     nodes={nodes} 
                     hoverColor={0xff6b9d}
+                    onClick={onSelectPart}
                 />
                 
                 <HoverableMesh 
                     meshName="Lips" 
                     nodes={nodes} 
                     hoverColor={0xff4444} 
+                    onClick={onSelectPart}
                 />
                 
                 <HoverableMesh 
                     meshName="Eyebrow_Left" 
                     nodes={nodes} 
                     hoverColor={0x4444ff} 
+                    onClick={onSelectPart}
                 />
                 
                 <HoverableMesh 
                     meshName="Eyeline_Left" 
                     nodes={nodes} 
                     hoverColor={0x4444ff} 
+                    onClick={onSelectPart}
                 />
                 
                 <HoverableMesh 
                     meshName="Eyes" 
                     nodes={nodes} 
                     hoverColor={0x44ff44}
+                    onClick={onSelectPart}
                 />
-                <HoverableMesh 
-                    meshName="Hair" 
-                    nodes={nodes} 
-                    hoverColor={0x44ff44}
-                />
+                
             </group>
         </Center>
     )
