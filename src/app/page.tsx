@@ -1,31 +1,35 @@
 "use client";
 
-import Footer from "@/components/Footer";
+import { useState } from "react";
 import React from "react";
+
 import Navbar from "@/components/Navbar";
 import Scene from "@/components/Scene";
-import { useState } from "react";
+import Footer from "@/components/Footer";
+
 import InfoPageEyes from "@/infopages/InfoPageEyes";
 import InfoPageLips from "@/infopages/InfoPageLips";
 import InfoPageNose from "@/infopages/InfoPageNose";
 import InfoPageEyebrow from "@/infopages/InfoPagesEyebrow";
 
 // Types for part keys and info
-export type PartKey = "Nose" | "Lips" | "Eyebrow_Left" | "Eyeline_Left" | "Eyes" | "Hair";
+// Dont forget to update the cont partCompononent 
+export type PartKey = "Nose" | "Lips" | "Eyebrow_Left" | "Eyeline_Left" | "Eyes";
 
 export default function Home() {
   // State for the currently selected part of the model.
   // Changing this will update the InfoPanel only.
+  // TODO: Add a starting page.
   const [selectedPartKey, setSelectedPartKey] = useState<PartKey>("Nose");
 
   // Map part keys to infopage components
+  // Dont forget to update the PartKey
   const partComponentMap: Record<PartKey, React.ReactNode> = {
     Nose: <InfoPageNose />,
     Lips: <InfoPageLips />,
     Eyebrow_Left: <InfoPageEyebrow />,
-    Eyeline_Left: <InfoPageEyebrow />,
+    Eyeline_Left: <InfoPageEyebrow />, // TODO: Make another page for Eyeline
     Eyes: <InfoPageEyes />,
-    Hair: <div className="p-20"><h2 className="text-2xl font-bold mb-4">Hair</h2><p>No info page for hair yet.</p></div>,
   };
 
   // Handler to update the selected part.
@@ -35,12 +39,14 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex h-screen overflow-hidden">
-        <div className="w-1/3 sticky h-full border-r-1 object-cover">
+      <main className="flex flex-col md:flex-row h-screen overflow-hidden">
+        <div className="w-full md:w-1/3 sticky h-4/5 md:h-full border-r-1 object-cover">
+         <h1 className="text-center">3D Model</h1>
           {/* Pass the handler to the scene/model */}
-          <Scene onSelectPart={handleSelectPart} />
+          <Scene onSelectPart={handleSelectPart} selectedPartKey={selectedPartKey} />
+         <div>3D Model</div>
         </div>
-        <div className="w-2/3 h-full overflow-y-auto bg-white">
+        <div className="w-full md:w-2/3 md:h-full overflow-y-auto bg-white">
           {/* Render the infopage component for the selected part with fade-in */}
           <div key={selectedPartKey} className="fade-in h-full">
             {partComponentMap[selectedPartKey]}

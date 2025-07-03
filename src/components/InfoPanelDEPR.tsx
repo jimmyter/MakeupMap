@@ -1,11 +1,9 @@
-import type { PartInfo } from "@/app/page";
+/*import type { PartInfo } from "@/app/page";
 
-// InfoPanelProps defines the type for the info prop.
 interface InfoPanelProps {
   info: PartInfo;
 }
 
-// InfoPanel displays the title and body for the selected part.
 export default function InfoPanel({ info }: InfoPanelProps) {
   return (
     <div className="p-20">
@@ -17,3 +15,4 @@ export default function InfoPanel({ info }: InfoPanelProps) {
     </div>
   )
 }
+  */

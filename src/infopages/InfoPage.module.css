@@ -1,0 +1,18 @@
+.page{
+    margin-left:2rem;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+}
+
+.title{
+    font-size: var(--text-5xl); /* 3rem (48px) */ 
+    line-height: var(--text-5xl--line-height); /* 1 */
+    font: bold;
+    margin-bottom: 3rem;
+}
+
+.paragraph{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: medium;
+}

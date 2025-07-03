@@ -7,9 +7,10 @@ import type { PartKey } from "@/app/page";
 
 interface SceneProps {
   onSelectPart: (partKey: PartKey) => void;
+  selectedPartKey: PartKey;
 }
 
-export default function Scene({ onSelectPart }: SceneProps){
+export default function Scene({ onSelectPart, selectedPartKey }: SceneProps){
     return(
         // className removed to be changed in page.tsx
         // or not
@@ -43,8 +44,8 @@ export default function Scene({ onSelectPart }: SceneProps){
                     // Might break with position or model change 
                     // Check min/maxZoom
                     enableZoom={true}
-                    minDistance={0.3}
-                    maxDistance={0.7}
+                    minDistance={0.4}
+                    maxDistance={0.5}
 
                     enablePan={false}
                     enableRotate={true}
@@ -52,7 +53,7 @@ export default function Scene({ onSelectPart }: SceneProps){
                 />
                 
                 {/* Model */}
-                <Model onSelectPart={onSelectPart}/>
+                <Model onSelectPart={onSelectPart} selectedPartKey={selectedPartKey}/>
             </Canvas>
         </div>
     )
