@@ -38,22 +38,31 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <main className="flex flex-col md:flex-row h-screen overflow-hidden">
-        <div className="w-full md:w-1/3 sticky h-4/5 md:h-full border-r-1 object-cover">
-         <h1 className="text-center">3D Model</h1>
-          {/* Pass the handler to the scene/model */}
-          <Scene onSelectPart={handleSelectPart} selectedPartKey={selectedPartKey} />
-         <div>3D Model</div>
-        </div>
-        <div className="w-full md:w-2/3 md:h-full overflow-y-auto bg-white">
-          {/* Render the infopage component for the selected part with fade-in */}
-          <div key={selectedPartKey} className="fade-in h-full">
-            {partComponentMap[selectedPartKey]}
+      <div className="bg-gradient-to-br from-pink-100 via-white to-purple-100 min-h-screen">
+        <Navbar />
+        <div className="flex flex-row w-full px-4 md:px-8 mt-5">
+          {/* Sticky 3D Model */}
+          <div className="hidden md:block mr-0 md:mr-8" >
+            {/*TODO top-100px might not be the most resposive implementation*/}
+            <div className=" sticky top-[100px] bg-white rounded-3xl object-cover border border-pink-100 flex flex-col justify-between h-[30em]">
+              
+                <Scene onSelectPart={handleSelectPart} selectedPartKey={selectedPartKey} />
+              
+              <div className="p-6 bg-gradient-to-r from-pink-100 to-purple-100 text-black rounded-b-3xl border-t border-pink-200 shadow-inner">
+                <h3 className="text-xl font-bold mb-2">Interactive 3d Model</h3>
+                <p className="text-black">Explore different parts of the model by clicking on them.</p>
+              </div>
+            </div>
+          </div>
+          {/* Info Panel */}
+          <div className="flex-1">
+            <div key={selectedPartKey} className="fade-in h-full">
+              {partComponentMap[selectedPartKey]}
+            </div>
           </div>
         </div>
-      </main>
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }

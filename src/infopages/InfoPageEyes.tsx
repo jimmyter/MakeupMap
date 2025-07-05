@@ -1,3 +1,5 @@
+import {Card, CardContent} from "@/components/ui/card"
+
 import styles from './InfoPage.module.css'
 
 export default function InfoPageEyes() {
@@ -16,10 +18,17 @@ export default function InfoPageEyes() {
         advanced looks, falsies or lash extensions may be used. Blending is key
         — smooth transitions between shadow colors elevate your look.
       </p>
-      <p className={styles.paragraph}>
-        Don’t forget the lower lash line — smudging color here creates balance.
-        Eye-safe glitter and shimmer can be used for festival or party styles.
-      </p>
+      
+      <Card className="bg-pink-50 border-pink-200 mb-6">
+          <CardContent className="pt-4">
+            <p className="text-pink-800 font-medium mb-2">💡 Pro Tip:</p>
+            <p className="text-pink-700">
+              Don’t forget the lower lash line — smudging color here creates balance.
+              Eye-safe glitter and shimmer can be used for festival or party styles.
+            </p>
+          </CardContent>
+        </Card>
+
       <p className={styles.paragraph}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel
         ante arcu. Maecenas molestie tristique fermentum. Nam sit amet tempor

@@ -19,7 +19,7 @@ export default function Footer() {
           ))}
         </nav>
         <p className="mt-10 text-center text-sm leading-5 text-muted-foreground">
-          This is a huge waste of time, I swear.
+          Best portfolio site from my cousing :D
         </p>
       </div>
     </footer>

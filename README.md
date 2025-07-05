@@ -12,7 +12,7 @@ An interactive 3D web application for learning makeup application techniques. Us
 
 - **Framework**: Next.js 15 with React 19
 - **3D Graphics**: Three.js with React Three Fiber and drei
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS, Shadcn/ui
 - **Language**: TypeScript
 - **3D Model**: Blender with Model from (https://www.blenderkit.com/get-blenderkit/91669d97-4368-42c4-8026-ce899483f4f8/)
 
