@@ -14,7 +14,7 @@ import InfoPageEyebrow from "@/infopages/InfoPagesEyebrow";
 
 // Types for part keys and info
 // Dont forget to update the cont partCompononent 
-export type PartKey = "Nose" | "Lips" | "Eyebrow_Left" | "Eyeline_Left" | "Eyes";
+export type PartKey = "Blush_Left" | "Contour_Left" | "Contour_Upper" | "Eyebrow_Left" | "Eyeline_Left" | "Nose" | "Lipliner" | "Lips" | "Eyes";
 
 export default function Home() {
   // State for the currently selected part of the model.
@@ -22,13 +22,15 @@ export default function Home() {
   // TODO: Add a starting page.
   const [selectedPartKey, setSelectedPartKey] = useState<PartKey>("Nose");
 
-  // Map part keys to infopage components
-  // Dont forget to update the PartKey
   const partComponentMap: Record<PartKey, React.ReactNode> = {
-    Nose: <InfoPageNose />,
-    Lips: <InfoPageLips />,
+    Blush_Left: <InfoPageEyes />, // Using Eyes page as placeholder
+    Contour_Left: <InfoPageNose />, // Using Nose page as placeholder
+    Contour_Upper: <InfoPageNose />, // Using Nose page as placeholder
     Eyebrow_Left: <InfoPageEyebrow />,
     Eyeline_Left: <InfoPageEyebrow />, // TODO: Make another page for Eyeline
+    Nose: <InfoPageNose />,
+    Lipliner: <InfoPageLips />, // Using Lips page as placeholder
+    Lips: <InfoPageLips />,
     Eyes: <InfoPageEyes />,
   };
 

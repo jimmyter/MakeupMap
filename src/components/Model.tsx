@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { Group, Mesh, MeshStandardMaterial } from "three";
 import type { PartKey } from "@/app/page";
 
-useGLTF.preload('/Face_v1.glb')
+useGLTF.preload('/models/Face_v2.glb')
 
 // Reusable component for any mesh with hover effects
 // Nodes hold the parts of the model and grabs the specific mesh from the model
@@ -90,28 +90,34 @@ interface ModelProps {
 
 export default function Model({ onSelectPart, selectedPartKey }: ModelProps){
     const group = useRef<Group>(null);
-    const {nodes, materials, scene} = useGLTF("/Face_v1.glb")
+    const {nodes, materials, scene} = useGLTF("/models/Face_v2.glb")
     
     return(
         <Center>
             <group ref={group}>
                 <primitive object={scene} />
                 
-                {/* Hoverable meshes - easy to add more! */}
+                {/* Hoverable meshes*/}
                 <HoverableMesh 
-                    meshName="Nose" 
+                    meshName="Blush_Left" 
                     nodes={nodes} 
                     hoverColor={0xff6b9d}
                     onClick={onSelectPart}
-                    selected={selectedPartKey === "Nose"}
+                    selected={selectedPartKey === "Blush_Left"}
                 />
-                
                 <HoverableMesh 
-                    meshName="Lips" 
+                    meshName="Contour_Left" 
                     nodes={nodes} 
-                    hoverColor={0xff4444} 
+                    hoverColor={0xff6b9d}
                     onClick={onSelectPart}
-                    selected={selectedPartKey === "Lips"}
+                    selected={selectedPartKey === "Contour_Left"}
+                />
+                <HoverableMesh 
+                    meshName="Contour_Upper" 
+                    nodes={nodes} 
+                    hoverColor={0xff6b9d}
+                    onClick={onSelectPart}
+                    selected={selectedPartKey === "Contour_Upper"}
                 />
                 
                 <HoverableMesh 
@@ -128,6 +134,29 @@ export default function Model({ onSelectPart, selectedPartKey }: ModelProps){
                     hoverColor={0x4444ff} 
                     onClick={onSelectPart}
                     selected={selectedPartKey === "Eyeline_Left"}
+                />
+                
+                <HoverableMesh 
+                    meshName="Nose" 
+                    nodes={nodes} 
+                    hoverColor={0xff6b9d}
+                    onClick={onSelectPart}
+                    selected={selectedPartKey === "Nose"}
+                />
+                <HoverableMesh 
+                    meshName="Lipliner" 
+                    nodes={nodes} 
+                    hoverColor={0xff4444} 
+                    onClick={onSelectPart}
+                    selected={selectedPartKey === "Lipliner"}
+                />
+
+                <HoverableMesh 
+                    meshName="Lips" 
+                    nodes={nodes} 
+                    hoverColor={0xff4444} 
+                    onClick={onSelectPart}
+                    selected={selectedPartKey === "Lips"}
                 />
                 
                 <HoverableMesh 

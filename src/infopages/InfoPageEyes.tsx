@@ -1,18 +1,28 @@
 import {Card, CardContent} from "@/components/ui/card"
 
 import styles from './InfoPage.module.css'
+import { Clock } from "lucide-react";
 
 export default function InfoPageEyes() {
   return (
     <div className={styles.page}>
       <h2 className={styles.title}>Eyes</h2>
-      <img src="/eyes.jpg" alt="Eyes" className="mb-4 max-w-sm w-full" />
+
       <p className={styles.paragraph}>
         Eyes are the focal point of most makeup looks. From soft neutrals to
         bold neons, eye makeup defines mood and intention. Techniques like
         tightlining, winged liner, and cut creases open up the eyes and add
         drama.
       </p>
+
+      <div className="text-sm text-gray-500 mb-6">
+        <span className="flex items-center gap-1">
+            <Clock className="w-4 h-4" />8 min read
+        </span>
+      </div>
+
+      <img src="/eyes.jpg" alt="Eyes" className="mb-4 max-w-sm w-full" />
+      
       <p className={styles.paragraph}>
         Mascara lifts and lengthens lashes, making the eyes appear larger. For
         advanced looks, falsies or lash extensions may be used. Blending is key
